@@ -306,6 +306,11 @@ img {
     margin: 0 auto;
 }
 
+.about__position {
+    align-items: center;
+    margin: 0 auto;
+}
+
 .about__information {
     margin-bottom: var(--mb-4);
 }
@@ -313,7 +318,8 @@ img {
 .about__information-title {
     font-size: var(--h3-font-size);
     color: var(--first-color-dark);
-    margin-bottom: var(--mb-2);
+    margin-bottom: var(--mb-4);
+    text-align: center;
 }
 
 .about__information-data {
@@ -339,10 +345,126 @@ img {
 }
 
 /* ===== SKILLS =====*/
+.skills__container {
+    align-items: center;
+    margin: 0 auto;
+}
 
+.skills__subtitle {
+    font-size: var(--h3-font-size);
+    color: var(--first-color-dark);
+    margin-bottom: var(--mb-2);
+}
+
+.skills__data {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 var(--mb-2);
+    margin-bottom: var(--mb-4);
+}
+
+.skills__name {
+    text-transform: uppercase;
+}
+
+.skills__bar {
+    position: absolute;
+    bottom: -.75rem;
+    height: .25rem;
+    background-color: var(--first-color-darken);
+    border-radius: 40px;
+}
+
+.skills__kotlin {
+    width: 70%;
+}
+.skills__java {
+    width: 60%;
+}
+.skills__flutter {
+    width: 65%;
+}
+.skills__android {
+    width: 80%;
+}
+.skills__firebase {
+    width: 75%;
+}
+.skills__db {
+    width: 60%;
+}
+.skills__github {
+    width: 80%;
+}
+.skills__figma {
+    width: 80%;
+}
+.skills__canva {
+    width: 85%;
+}
 
 /* ===== EDUCATION =====*/
+.education__container {
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--first-color-darken);
+    border-radius: 30px;
+    color: var(--first-color-lighten);
+}
 
+.education__content {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    margin-bottom: 22px;
+}
+
+.education__year, .education__race {
+    font-size: var(--h3-font-size);
+    margin-bottom: .25rem;
+}
+
+.education__university, .education__specialty {
+    display: block;
+    font-size: var(--smaller-font-size);
+}
+
+.education__year, .education__university {
+    text-align: right;
+}
+
+.education__time {
+    padding: 0 1rem;
+    justify-self: center;
+}
+
+.education__rounder {
+    position: relative;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--first-color);
+    border-radius: 50%;
+}
+
+.education__rounder::before {
+    content: '';
+    position: absolute;
+    transform: translate(-4px, -4px);
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--first-color);
+    border-radius: 50%;
+}
+
+.education__line {
+    display: block;
+    height: 90%;
+    width: 2px;
+    background-color: var(--first-color);
+    transform: translate(5px, -4px);
+}
 
 /* ===== SERVICES =====*/
 

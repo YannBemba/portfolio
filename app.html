@@ -393,16 +393,16 @@
                 <h2 class="section-title">Entrer en contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
+                    <form class="contact__form">
                         <div class="contact__inputs">
-                            <input type="text" placeholder="Nom" class="contact__input">
-                            <input type="mail" placeholder="Email" class="contact__input">
+                            <input type="text" id="nom" placeholder="Nom" class="contact__input nom">
+                            <input type="mail" id="email" placeholder="Email" class="contact__input email">
                         </div>
 
-                        <input type="text" placeholder="Projet" class="contact__input">
+                        <input type="text" id="projet" placeholder="Projet" class="contact__input projet">
 
-                        <textarea name="" id="" cols="30" rows="10"
-                        placeholder="Message" class="contact__input"></textarea>
+                        <textarea name="" id="message" cols="30" rows="10"
+                        placeholder="Message" class="contact__input message"></textarea>
 
                         <input type="submit" value="Envoyer votre message" class="button">
                     </form>
@@ -446,6 +446,8 @@
         </footer>
 
         <!--===== MAIN JS =====-->
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/contact.js"></script>
     </body>
 </html>

@@ -395,7 +395,7 @@
                 <div class="contact__container bd-grid">
                     <form class="contact__form">
                         <div class="contact__inputs">
-                            <input type="text" id="nom" placeholder="Nom" class="contact__input nom">
+                            <input type="text" id="name" placeholder="Nom" class="contact__input nom">
                             <input type="mail" id="email" placeholder="Email" class="contact__input email">
                         </div>
 
@@ -404,7 +404,7 @@
                         <textarea name="" id="message" cols="30" rows="10"
                         placeholder="Message" class="contact__input message"></textarea>
 
-                        <input type="submit" value="Envoyer votre message" class="button">
+                        <input type="submit" id="button__form" value="Envoyer votre message" class="button">
                     </form>
 
                     <div>
@@ -446,7 +446,8 @@
         </footer>
 
         <!--===== MAIN JS =====-->
-        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="assets/js/contact.js"></script>
     </body>

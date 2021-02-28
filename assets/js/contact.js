@@ -1,52 +1,52 @@
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
+// Unique Firebase Object
+var firebaseConfig = {
     apiKey: "AIzaSyCLn8IGQDR9ux5pV6zZx-BisNx3jm45Y-M",
     authDomain: "bemba-yann---portfolio.firebaseapp.com",
+    databaseURL: "https://bemba-yann---portfolio-default-rtdb.firebaseio.com",
     projectId: "bemba-yann---portfolio",
     storageBucket: "bemba-yann---portfolio.appspot.com",
     messagingSenderId: "994573713974",
     appId: "1:994573713974:web:098c02ba00550eddbc4e97",
     measurementId: "G-KNB94XR166"
-  };
+};
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+// Initialize Firebase server
+firebase.initializeApp(firebaseConfig);
 
-// Reference contactInfo collections
+var firestore = firebase.firestore()
 
-let contactInfo = firebase.database().ref("infos")
+// Variables to access database collection
+const db = firestore.collection("formData")
 
-document.querySelector(".contact__form").addEventListener("submit", submitForm);
+// Get submit form
+let submitButton = document.getElementById('button__form') 
 
-function submitForm(e) {
-    e.preventDefault();
-    // Get input values
+// Create Event Listener to allow form submission
 
-    let nom = document.getElementById("nom");
-    let email = document.getElementById("email");
-    let projet = document.getElementById("projet");
-    let message = document.getElementById("message");
-    console.log(nom, email, projet, message)
-    
-    saveContactInfo(nom, email, projet, message)
+submitButton.addEventListener("click", (e) => {
+    // Prevent default form submission behavior
+    e.preventDefault()
 
-    document.querySelector(".contact__form").reset();
-}
+    //Get Form values
+    let name = document.getElementById('name').value
+    let email = document.getElementById('email').value
+    let projet = document.getElementById('projet').value
+    let message = document.getElementById('message').value
 
-// Save infos to Firebase
+    // Save form data to Firebase
+    db.doc().set({
+        uName: name,
+        uEmail: email,
+        uProjet: projet,
+        uMessage: message
+    }).then( () => {
+       console.log("Data saved") 
+    }).catch((error) => {
+        console.log(error)
+    })
 
-function saveContactInfo(nom, email, projet, message) {
-    let newContactInfo = contactInfo.push();
+    document.querySelector(".contact__form").reset()
 
-    newContactInfo.set({
-        username: nom,
-        email: email,
-        projet: projet,
-        message: message
-    });
-}
-
-
-
+    // Alert
+    alert("Votre message a bien été envoyé :O")
+})

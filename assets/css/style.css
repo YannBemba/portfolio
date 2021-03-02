@@ -496,6 +496,10 @@ img {
     margin-bottom: var(--mb-1);
 }
 
+.services__description {
+    font-size: 13px;
+}
+
 .services__content,
 .services__icon,
 .services__description,

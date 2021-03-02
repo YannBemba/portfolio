@@ -21,6 +21,12 @@ const db = firestore.collection("formData")
 // Get submit form
 let submitButton = document.getElementById('button__form') 
 
+// Input check validation
+const isEmail = (email) => {
+    const e = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return e.test(String(email).toLowerCase());
+}
+
 // Create Event Listener to allow form submission
 
 submitButton.addEventListener("click", (e) => {
@@ -33,21 +39,22 @@ submitButton.addEventListener("click", (e) => {
     let projet = document.getElementById('projet').value
     let message = document.getElementById('message').value
 
-    // Save form data to Firebase
+    //Save form data to Firebase
     db.doc().set({
         uName: name,
         uEmail: email,
         uProjet: projet,
         uMessage: message
     }).then( () => {
-       console.log("Data saved") 
+    console.log("Data saved") 
     }).catch((error) => {
         console.log(error)
     })
 
     sendEmail(name, projet, email, message)
-
     document.querySelector(".contact__form").reset()
+
+    
 })
 
 // Send email info

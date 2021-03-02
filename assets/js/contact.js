@@ -45,8 +45,21 @@ submitButton.addEventListener("click", (e) => {
         console.log(error)
     })
 
-    document.querySelector(".contact__form").reset()
+    sendEmail(name, projet, email, message)
 
-    // Alert
-    alert("Votre message a bien été envoyé :O")
+    document.querySelector(".contact__form").reset()
 })
+
+// Send email info
+function sendEmail(name, projet, email, message) {
+    Email.send({
+        Host : "smtp.gmail.com",
+        Username: 'yannbembacontact@gmail.com',
+        Password: "gwzfyycouzxvazfi",
+        To: 'yannbembacontact@gmail.com',
+        From: 'yannbembacontact@gmail.com',
+        Subject: `${name} vous a envoyé un message`,
+        Body: `Nom: ${name} <br/> Email: ${email} <br/>
+        Projet: ${projet} Message: ${message}` 
+    }).then((_message) => alert("Votre message a bien été envoyé"))
+}

@@ -54,7 +54,6 @@ submitButton.addEventListener("click", (e) => {
     sendEmail(name, projet, email, message)
     document.querySelector(".contact__form").reset()
 
-    
 })
 
 // Send email info

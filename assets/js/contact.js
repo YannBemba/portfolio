@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore()
 
 // Variables to access database collection
-const db = firestore.collection("formData")
+const db = firestore.collection("contactData")
 
 // Get submit form
 let submitButton = document.getElementById('button__form') 
@@ -27,45 +27,51 @@ const isEmail = (email) => {
     return e.test(String(email).toLowerCase());
 }
 
-// Create Event Listener to allow form submission
+if(submitButton) {
+    // Create Event Listener to allow form submission
 
-submitButton.addEventListener("click", (e) => {
-    // Prevent default form submission behavior
-    e.preventDefault()
-
-    //Get Form values
-    let name = document.getElementById('name').value
-    let email = document.getElementById('email').value
-    let projet = document.getElementById('projet').value
-    let message = document.getElementById('message').value
-
-    //Save form data to Firebase
-    db.doc().set({
-        uName: name,
-        uEmail: email,
-        uProjet: projet,
-        uMessage: message
-    }).then( () => {
-    console.log("Data saved") 
-    }).catch((error) => {
-        console.log(error)
+    submitButton.addEventListener("click", (e) => {
+        // Prevent default form submission behavior
+        e.preventDefault()
+    
+        //Get Form values
+        let name = document.getElementById('name').value
+        let email = document.getElementById('email').value
+        let projet = document.getElementById('projet').value
+        let message = document.getElementById('message').value
+    
+        //Save form data to Firebase
+        db.doc().set({
+            uName: name,
+            uEmail: email,
+            uProjet: projet,
+            uMessage: message
+        }).then( () => {
+        console.log("Data saved") 
+        }).catch((error) => {
+            console.log(error)
+        })
+    
+        sendEmail(name, projet, email, message)
+        document.querySelector(".contact__form").reset()
+    
     })
-
-    sendEmail(name, projet, email, message)
-    document.querySelector(".contact__form").reset()
-
-})
-
-// Send email info
-function sendEmail(name, projet, email, message) {
-    Email.send({
-        Host : "smtp.gmail.com",
-        Username: 'yannbembacontact@gmail.com',
-        Password: "gwzfyycouzxvazfi",
-        To: 'yannbembacontact@gmail.com',
-        From: 'yannbembacontact@gmail.com',
-        Subject: `${name} vous a envoyé un message`,
-        Body: `Nom: ${name} <br/> Email: ${email} <br/>
-        Projet: ${projet} Message: ${message}` 
-    }).then((_message) => alert("Votre message a bien été envoyé"))
+    
+    // Send email info
+    function sendEmail(name, projet, email, message) {
+        Email.send({
+            Host : "smtp.gmail.com",
+            Username: 'yannbembacontact@gmail.com',
+            Password: "gwzfyycouzxvazfi",
+            To: 'yannbembacontact@gmail.com',
+            From: 'yannbembacontact@gmail.com',
+            Subject: `${name} vous a envoyé un message`,
+            Body: `Nom: ${name} <br/> Email: ${email} <br/>
+            Projet: ${projet} Message: ${message}` 
+        }).then((_message) => alert("Votre message a bien été envoyé"))
+    }
+} else {
+    console.log("C'est viidee");
 }
+
+
